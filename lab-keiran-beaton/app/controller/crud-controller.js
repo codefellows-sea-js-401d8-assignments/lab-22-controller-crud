@@ -19,6 +19,7 @@ function CrudController($log, $http){
     $http.post(baseUrl, list, config)
       .then( res => {
         this.lists.push(res.data);
+        console.log(res.data);
       })
       .catch(err => {
         $log.log('error', err);
@@ -26,11 +27,13 @@ function CrudController($log, $http){
   };
 
   this.deleteList = function(list) {
-    for(var i = 0; i < this.lists.length; i++) {
-      if(this.lists[i] === list) {
-        this.lists.splice(i, i+1);
+    $http.delete(baseUrl, list, config)
+    .then(() => {
+      for (var i = 0; i < this.lists.length; i++) {
+        if(this.lists[i] === list) {
+          this.lists.splice(i, 1);
+        }
       }
-    }
-    $http.delete();
+    });
   };
 }
