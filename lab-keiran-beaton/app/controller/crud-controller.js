@@ -25,13 +25,12 @@ function CrudController($log, $http){
       });
   };
 
-  this.readList = function() {
-    $http.readList(baseUrl)
-    .then(res => {
-      
-    })
-    .catch(err => {
-      $log.log('error', err);
-    });
+  this.deleteList = function(list) {
+    for(var i = 0; i < this.lists.length; i++) {
+      if(this.lists[i] === list) {
+        this.lists.splice(i, i+1);
+      }
+    }
+    $http.delete();
   };
 }
