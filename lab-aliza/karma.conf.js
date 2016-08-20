@@ -7,7 +7,7 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-    webpack = webpackConfig,
+    webpack: webpackConfig,
 
 
     // frameworks to use
@@ -71,5 +71,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
