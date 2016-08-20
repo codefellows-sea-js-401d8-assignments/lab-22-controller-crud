@@ -2,7 +2,7 @@
 
 describe('testing list-controller', function(){
   beforeEach(() => {
-    angular.mock.module('crudApp');
+    angular.mock.module('listApp');
     angular.mock.inject(($controller, $httpBackend) => {
       this.listCtrl = new $controller('ListController');
       this.$httpBackend = $httpBackend;

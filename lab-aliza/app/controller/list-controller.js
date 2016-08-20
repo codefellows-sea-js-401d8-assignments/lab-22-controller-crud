@@ -1,9 +1,9 @@
 'use strict';
 
 const angular = require('angular');
-const crudApp = angular.module('crudApp');
+const listApp = angular.module('listApp');
 
-crudApp.controller('ListController', ['$log', '$http', ListController]);
+listApp.controller('ListController', ['$log', '$http', ListController]);
 
 function ListController($log, $http){
   this.lists = [];
@@ -23,7 +23,7 @@ function ListController($log, $http){
         this.lists.push(res.data);
       })
       .catch(err => {
-        $log.log('Errororororor', err);
+        $log.log('Error: ', err);
       });
   };
 }
