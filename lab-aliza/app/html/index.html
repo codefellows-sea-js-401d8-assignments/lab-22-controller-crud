@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="crudApp">
+  <head>
+    <title> crudApp </title>
+    <link rel="stylesheet" href="bundle.css">
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <main ng-controller="ListController as listCtrl">
+      <form class="form-inline"
+      validate ng-submit="listCtrl.createList(listCtrl.list)">
+
+      <div class="form-group">
+        <label for="name">Name: </label>
+        <input name="name" class="form-control" ng-model="listCtrl.list.name">
+      </div>
+
+      <button type="submit" class="btn btn-default"> + </button>
+      </form>
+    </main>
+  </body>
+</html>
