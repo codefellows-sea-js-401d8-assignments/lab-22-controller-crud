@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="crudApp">
+<head>
+  <title>Crud Controller</title>
+  <link rel="stylesheet" href="bundle.css">
+  <script src="bundle.js"></script>
+</head>
+<body>
+  <main ng-controller="CrudController as crudCtrl">
+  <h1>Make a List!</h1>
+  <form name="crudForm" novalidate>
+
+
+    <label for="list-name">List Name</label>
+    <input name="list-name" ng-model="crudCtrl.list.name"></input>
+    <button type="submit" ng-click="crudCtrl.create(crudCtrl.list)">Create</button>
+
+    <label for="list-id">List Id</label>
+    <input name="list-id" ng-model="crudCtrl.list._id"></input>
+    <button type="submit" ng-click="crudCtrl.delete(crudCtrl.list._id)">Delete List by Id</button>
+
+    <button type="submit" ng-click="crudCtrl.getAll()">Get All Lists</button>
+  </form>
+
+  <ol>
+    <li ng-repeat="list in crudCtrl.lists">{{list.name}}</li>
+  </ol>
+
+</body>
+</html>

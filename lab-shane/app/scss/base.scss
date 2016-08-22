@@ -1,0 +1,20 @@
+@import './vendor/normalize-scss/_normalize';
+@include normalize();
+@import '_theme';
+
+body, html{
+  background-color: $two;
+  color: $three;
+  width: 100%;
+  height: 100%;
+}
+
+h1{
+  color: $one;
+}
+
+form input, button{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+}
