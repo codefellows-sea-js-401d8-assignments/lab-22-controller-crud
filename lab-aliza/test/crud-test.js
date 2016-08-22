@@ -26,4 +26,15 @@ describe('testing list-controller', function(){
     this.listCtrl.createList(requestData);
     this.$httpBackend.flush();
   });
+
+  it('testing destroyList', () => {
+    let url = 'http://localhost:3000/api/list/1234';
+    let headers = {
+      'Accept': 'application/json'
+    };
+    this.$httpBackend.expectDELETE(url, headers)
+    .respond(200, {});
+    this.listCtrl.destroyList('1234');
+    this.$httpBackend.flush();
+  });
 });

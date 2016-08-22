@@ -19,9 +19,9 @@ function ListController($log, $http){
     $log.debug('listCtrl.createList');
     $http.post(baseUrl, list, config)
       .then(res => {
-        $log('Success!', res.data);
+        $log.log('Success!', res.data);
         this.lists.push(res.data);
-        $log('this.lists', this.lists);
+        $log.log('this.lists', this.lists);
       })
       .catch(err => {
         $log.log('Error: ', err);
@@ -35,8 +35,8 @@ function ListController($log, $http){
           return item._id === id;
         });
         this.lists.splice(index, 1);
-        $log('Success!', res.data);
-        $log('this.lists', this.lists);
+        $log.log('Success!', res.data);
+        $log.log('this.lists', this.lists);
       })
       .catch(err => {
         $log.log('Error: ', err);
