@@ -14,5 +14,5 @@ npm run lint
 ```
 To start server, make sure mongod is running as well as noteapp-backend, then
 ```
-node server.js
+npm run watch
 ```
