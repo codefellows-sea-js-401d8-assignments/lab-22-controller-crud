@@ -11,10 +11,8 @@ function ListController($log, $http) {
   };
   let baseUrl = `${__API_URL__}/api/list`;
   this.lists = [];
-  this.deleted = [];
 
   this.createList = function(list) {
-
     $http.post(baseUrl, list, headers).then(res => {
       $log.log('success!', res.data);
       this.lists.push(res.data);
