@@ -15,9 +15,9 @@
     <input name="list-name" ng-model="crudCtrl.list.name"></input>
     <button type="submit" ng-click="crudCtrl.create(crudCtrl.list)">Create</button>
 
-    <label for="list-id">Delete List by Id</label>
+    <label for="list-id">List Id</label>
     <input name="list-id" ng-model="crudCtrl.list._id"></input>
-    <button type="submit" ng-click="crudCtrl.delete(crudCtrl.list._id)">Delete List</button>
+    <button type="submit" ng-click="crudCtrl.delete(crudCtrl.list._id)">Delete List by Id</button>
 
     <button type="submit" ng-click="crudCtrl.getAll()">Get All Lists</button>
   </form>

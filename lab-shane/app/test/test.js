@@ -1,4 +1,5 @@
 'use strict';
+
 const url = 'http://localhost:3000/api/list';
 const headers = {
   'Accept': 'application/json',
@@ -36,28 +37,18 @@ describe('testing lists', function() {
     let requestData = {
       _id: '1111'
     };
-    this.crudCtrl.create({name: 'batman'});
 
-    this.$httpBackend.expectDELETE(url + '/' + requestData._id, requestData, headers)
-      .respond(200, {
-        'msg': 'deleted!'
-      });
-    this.crudCtrl.delete(requestData);
+    this.$httpBackend.expectDELETE(url + '/' + requestData._id)
+      .respond(200);
+    this.crudCtrl.delete(requestData._id);
     this.$httpBackend.flush();
   });
 
   it('testing get all', () => {
-    this.$httpBackend.whenGET(url, headers)
-      .respond(200, {
-        name: 'batman',
-        _id: '1111',
-        _v: 0,
-        notes: []
-      });
+    this.$httpBackend.expectGET(url)
+      .respond(200);
     this.crudCtrl.getAll();
     this.$httpBackend.flush();
   });
-
-
 
 });
