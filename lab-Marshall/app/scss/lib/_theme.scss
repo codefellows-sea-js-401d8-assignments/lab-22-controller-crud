@@ -1,0 +1,40 @@
+$app-dark: #040404;
+$app-light: white;
+$app-eagle: #13505B;
+$app-metallic: #0C7489;
+$app-blue: #119DA4;
+$app-disable: #777;
+
+header {
+  border-top: 4vw solid $app-blue;
+  border-bottom: 4vw solid $app-blue;
+}
+
+main {
+  border-left: 3vw solid $app-eagle;
+  border-right: 3vw solid $app-eagle;
+}
+
+body {
+  background-color: $app-dark;
+}
+
+h1, h2, label{
+  color: $app-light;
+  display: flex;
+  justify-content:center;
+}
+
+ ol, li {
+   color: $app-light;
+ }
+
+input, form, button {
+  display: flex;
+  justify-content: center;
+  color: $app-dark;
+}
+
+section {
+  color: $app-light;
+}
