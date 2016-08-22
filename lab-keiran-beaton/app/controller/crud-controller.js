@@ -27,6 +27,14 @@ function CrudController($log, $http){
       });
   };
 
+  this.readList = function(listToRead) {
+    $log.debug('Read List Method');
+    $http.get(baseUrl, listToRead, config)
+    .then(res => {
+      $log.log('res.data', res.data);
+    });
+  };
+
   this.updateList = function(listToUpdate) {
     $log.debug('Update List method');
     let updatedLists = [];
