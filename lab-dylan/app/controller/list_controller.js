@@ -28,6 +28,7 @@ function ListController($log, $http) {
     let url = baseUrl + '/';
     $http.get(url, headers).then( res => {
       $log.log('success', res.data);
+      this.lists = [];
       if (res.data instanceof Array) {
         res.data.forEach((list) => {
           this.lists.push(list);
@@ -43,7 +44,7 @@ function ListController($log, $http) {
   };
 
   this.deleteList = function(listId) {
-    let url = baseUrl + `${listId}`;
+    let url = baseUrl + `/${listId}`;
     $http.delete(url, headers).then(res => {
       $log.log('success', res.data);
     })
