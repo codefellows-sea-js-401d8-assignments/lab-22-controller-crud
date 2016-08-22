@@ -18,34 +18,34 @@ module.exports = {
   plugins: plugins,
   output: {
     path: 'build',
-    filenam: 'bundle.js'
+    filename: 'bundle.js'
   },
   postcss: function(){
     return [autoprefixer];
   },
   sassLoader: {
-    inculdePaths: [`${__dirname}/app/scss/lib`]
+    includePaths: [`${__dirname}/app/scss/lib`]
   },
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractText.extract('style', 'css!scss!sass!')
+        loader: ExtractText.extract('style', 'css!postcss!sass!')
       },
       {
         test: /\.js$/,
         loader: 'babel',
         exclude: /node_modules/,
-        query:{
+        query: {
           presets: ['es2015']
         }
       },
       {
         test: /\.(jpg|gif)$/,
-        loader: 'file?name=img/[hash]-[name].[ext]'
+        loader: 'file?name=image/[hash]-[name].[ext]'
       },
       {
-        test: /\.(woff|svg|eof|ttf).*/,
+        test: /\.(woff|svg|eot|ttf).*/,
         loader: 'url?limit=10000&name=font/[name].[ext]'
       }
     ]
