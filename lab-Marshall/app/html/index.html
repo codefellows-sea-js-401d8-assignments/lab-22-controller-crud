@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+  <head>
+    <title> Choose your own adventure! </title>
+    <script src="bundle.js"></script>
+    <link rel="stylesheet" href="bundle.css">
+  </head>
+
+  <body>
+    <header>
+      <h1> Choose your own adventure! </h1>
+    </header>
+
+    <main ng-controller="GameController as gameCtrl">
+
+        <h2 ng-hide="gameCtrl.playerIsDone">Select your player character!</h2>
+        <form novalidate ng-submit="gameCtrl.playerSignUp(createPlayerForm.player)" ng-hide="gameCtrl.playerIsDone" name="createPlayerForm">
+          <label for="name">Name:</label>
+          <input type="text" name="name" ng-model="createPlayerForm.player.name">
+
+          <label for="email">Email:</label>
+          <input type="text" name="email" ng-model="createPlayerForm.player.email">
+
+          <label for="classes">Class:</label>
+          <select name="classes" ng-model="createPlayerForm.player.classes" ng-init="createPlayerForm.player.classes='Intern'">
+            <option ng-repeat="item in gameCtrl.classes" value="{{item}}">
+              {{item}}
+            </option>
+          </select>
+
+          <button type="submit"> Sign Up </button>
+        </form>
+
+        <h2 ng-hide="gameCtrl.monsterIsDone">Select your monster!</h2>
+        <form novalidate ng-submit="gameCtrl.monsterSignUp(createMonsterForm.monster)" ng-hide="gameCtrl.monsterIsDone" name="createMonsterForm">
+          <label for="name">Name:</label>
+          <input type="text" name="name" ng-model="createMonsterForm.monster.name">
+
+          <label for="species">Species:</label>
+          <select name="species" ng-model="createMonsterForm.monster.species" ng-init="createMonsterForm.monster.species='Several Chickens'">
+            <option ng-repeat="item in gameCtrl.species" value="{{item}}">
+              {{item}}
+            </option>
+          </select>
+
+          <button type="submit"> Submit Monster </button>
+        </form>
+
+        <h2 ng-show="gameCtrl.monsterIsDone"> You have finished your selections! </h2>
+
+        <section ng-show="gameCtrl.playerIsDone">
+          <h3> Player: {{ gameCtrl.player.name }} </h2>
+          <p> Email: {{ gameCtrl.player.email }} </p>
+          <p> Class: {{ gameCtrl.player.class }} </p>
+        </section>
+
+        <section ng-show="gameCtrl.monsterIsDone">
+          <h3>Monster: {{ gameCtrl.monster.name }} </h2>
+          <p>Species: {{ gameCtrl.monster.species }}</p>
+        </section>
+
+
+
+
+
+
+      <form name="gamePadForm" novalidate>
+        <label for="direction"> Direction: </label>
+        <select name="direction" ng-model="gamePadForm.direction">
+          <option ng-init="gamePadForm.direction='north'" ng-repeat="direction in gameCtrl.directions" value="{{direction}}">
+            {{direction}}
+          </option>
+        </select>
+
+        <button type="button" ng-click="gameCtrl.moveDirection(gamePadForm.direction);gameCtrl.monsterMove()">
+          Move
+        </button>
+      </form>
+
+      <ol>
+        <li ng-repeat="item in gameCtrl.history track by item.id"> {{item.text}} </li>
+      </ol>
+    </main>
+  </body>
+</html>
