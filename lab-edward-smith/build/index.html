@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="crudApp">
+  <head>
+    <title>Note CRUD</title>
+    <script src="bundle.js"></script>
+    <link rel="stylesheet" href="bundle.css">
+  </head>
+  <body ng-controller="ListController as listCtrl">
+    <form class="form-inline" novalidate ng-submit="listCtrl.createList(listCtrl.list)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" class="form-control" ng-model="listCtrl.list.name">
+      </div>
+      <button type="button" class="btn btn-default"> + </button>
+    </form>
+  </body>
+</html>
