@@ -13,21 +13,23 @@ function ListController($log, $http) {
       'Content-Type': 'application/json',
     },
   };
+
   this.lists = [];
   this.deleted = [];
+
 
   this.createList = function(list) {
     $log.debug('listCtrl.createList');
     $http.post(baseUrl, list, config)
     .then(res => {
       $log.log('created', res.data);
-      // this.lists.push(res.data);
     })
     .catch(err => {
       $log.log('reject', err);
       alert(err.status + ': ' + err.statusText);
     });
   };
+
 
   this.fetchList = function(listId) {
     $log.debug('listCtrl.fetchList');
@@ -52,6 +54,7 @@ function ListController($log, $http) {
     });
   };
 
+
   this.updateList = function(listId, listInfo) {
     $log.debug('listCtrl.updateList');
 
@@ -66,6 +69,7 @@ function ListController($log, $http) {
       alert(err.status + ': ' + err.statusText);
     });
   };
+
 
   this.deleteList = function(listId) {
     $log.debug('listCtrl.deleteList');
