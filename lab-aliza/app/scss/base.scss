@@ -9,4 +9,20 @@ html, body {
 
 body {
   background-color: $app-light;
+  h1 {
+    margin: 20px;
+  }
+  form {
+    width: 50%;
+    padding: 10px;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      padding: 5px;
+      button {
+        margin: 10px;
+      }
+    }
+  }
 }
