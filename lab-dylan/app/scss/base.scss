@@ -1,0 +1,14 @@
+@import "./vendor/bootstrap/stylesheets/_bootstrap.scss";
+@import "./vendor/font-awesome-4.6.3/scss/font-awesome.scss";
+@import "_theme";
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  color: $app-dark;
+}
+
+body {
+  background-color: $app-default;
+}
