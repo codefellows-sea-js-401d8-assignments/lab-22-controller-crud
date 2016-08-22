@@ -15,25 +15,48 @@ function CrudController($log, $http){
     }
   };
 
-  this.createList = function(list) {
-    $http.post(baseUrl, list, config)
+  this.createList = function(newList) {
+    $log.debug('Create list method');
+    $http.post(baseUrl, newList, config)
       .then( res => {
+        $log.log('res.data', res.data);
         this.lists.push(res.data);
-        console.log(res.data);
       })
       .catch(err => {
         $log.log('error', err);
       });
   };
 
-  this.deleteList = function(list) {
-    $http.delete(baseUrl, list, config)
-    .then(() => {
-      for (var i = 0; i < this.lists.length; i++) {
-        if(this.lists[i] === list) {
-          this.lists.splice(i, 1);
+  this.updateList = function(listToUpdate) {
+    $log.debug('Update List method');
+    let updatedLists = [];
+    $http.put(baseUrl, listToUpdate, config)
+    .then(res => {
+      $log.log('res.data', res.data);
+      updatedLists = this.lists.ForEach(function(list) {
+        if(list._id === listToUpdate._id) {
+          list = listToUpdate;
         }
-      }
+      });
+      this.lists = updatedLists;
     });
+  };
+
+  this.deleteList = function(listToDelete) {
+    $log.debug('Delete list method');
+    let filteredLists = [];
+    $http.delete(baseUrl, listToDelete, config)
+      .then( res => {
+        $log.log('res.data', res.data);
+        filteredLists = this.lists.filter(function(list) {
+          if (list._id !== listToDelete._id) {
+            return list;
+          }
+        });
+        this.lists = filteredLists;
+      })
+      .catch(err => {
+        $log.log('error', err);
+      });
   };
 }
