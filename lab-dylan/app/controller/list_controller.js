@@ -1,8 +1,8 @@
 'use strict';
 
 const angular = require('angular');
-const gameApp = angular.module('listApp');
-gameApp.controller('ListController', ['$log', '$http', ListController]);
+const listApp = angular.module('listApp');
+listApp.controller('ListController', ['$log', '$http', ListController]);
 
 function ListController($log, $http) {
   const headers = {
