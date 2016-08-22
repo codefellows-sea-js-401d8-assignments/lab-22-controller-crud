@@ -101,13 +101,25 @@ function GameController($log, $http){
   this.createList = function(list){
     $log.debug('listCtrl.createList');
     $http.post(baseUrl , list, config)
-      .then( res => {
-        $log.log('success!', res.data);
+      .then((res) => {
+        $log.log('response data: ', res.data);
         this.lists.push(res.data);
       })
-      .catch( err => {
+      .catch((err) => {
         $log.error('error!', err);
         alert('Ya dun goofed');
       });
+  };
+
+  this.getList = function(){
+
+  };
+
+  this.deleteList = function(){
+
+  };
+
+  this.updateList = function(){
+
   };
 }
