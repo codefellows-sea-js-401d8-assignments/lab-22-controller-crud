@@ -8,7 +8,7 @@ crudApp.controller('ListController', ['$log', '$http', ListController]);
 function ListController($log, $http){
   this.lists = [];
 
-  let baseUrl = `${__API_URL__}/api/list`;
+  let baseUrl = `${__API_URL__}/api/list/`;
   let config = {
     headers: {
       'Accept': 'application/json',
@@ -38,5 +38,14 @@ function ListController($log, $http){
         $log.error('fail', err);
         alert('you fud up');
       });
+  }
+
+  this.deleteListItem = function(listId) {
+    $http.delete(baseUrl + listId)
+      .then( res => {
+        $log.log('success');
+        var index = this.lists.indexOf(listId);
+        this.lists.splice(index, 1)
+      })
   }
 };

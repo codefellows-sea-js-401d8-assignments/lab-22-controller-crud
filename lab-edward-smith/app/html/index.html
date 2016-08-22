@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="crudApp">
   <head>
-    <title> demoApp </title>
+    <title> crudApp </title>
     <link rel="stylesheet" href="bundle.css">
     <script src="bundle.js"></script>
   </head>
@@ -16,7 +16,7 @@
       </form>
 
       <section>
-        <p ng-repeat="list in listCtrl.lists">{{list.name}}</p>
+        <div ng-repeat="list in listCtrl.lists">{{list.name}} <button type="button" ng-click="listCtrl.deleteListItem(list._id)"></button></div>
       </section>
     </main>
   </body>
