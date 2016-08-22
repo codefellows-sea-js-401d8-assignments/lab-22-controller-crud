@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="crudyApp">
+
+  <head>
+    <title>CRUDy App</title>
+    <script type="text/javascript" src="bundle.js"></script>
+    <link rel="stylesheet" href="bundle.css">
+  </head>
+
+  <body>
+
+    <h1>CRUDy App</h1>
+
+    <main ng-controller="ListController as listCtrl">
+
+      <form class="form-inline">
+
+        <div class="form-group">
+          <label for="name"> Name: </label>
+          <input name="name" class="form-control">
+        </div>
+
+        <button type="submit" class="button btn-primary"> Add List </button>
+
+      </form>
+    </main>
+  </body>
+</html>
