@@ -24,7 +24,7 @@ function ListController($log, $http) {
       console.log(this.lists);
     })
     .catch((err) => {
-      $log.error('OH NO AN ERROR! ' + err);
+      $log.error('Error in Creating List: ' + err);
     });
   };
 
@@ -39,7 +39,7 @@ function ListController($log, $http) {
       });
     })
     .catch((err) => {
-      $log.error('Error in GET route: ' + err);
+      $log.error('Error in Getting Lists: ' + err);
     });
   };
 
@@ -51,7 +51,7 @@ function ListController($log, $http) {
     })
     .then(this.getLists())
     .catch((err) => {
-      $log.error('Error in Remove Route: ' + err);
+      $log.error('Error in Removing List: ' + err);
     });
   };
 
