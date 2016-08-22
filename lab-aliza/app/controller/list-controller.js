@@ -19,11 +19,13 @@ function ListController($log, $http){
     $log.debug('listCtrl.createList');
     $http.post(baseUrl, list, config)
       .then(res => {
-        $log.log('Success!', res.data);
+        console.log('Success!', res.data);
         this.lists.push(res.data);
+        console.log('this.lists', this.lists);
       })
       .catch(err => {
         $log.log('Error: ', err);
       });
   };
+
 }
