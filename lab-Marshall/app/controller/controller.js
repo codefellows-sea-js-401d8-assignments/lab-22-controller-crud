@@ -3,9 +3,9 @@
 const angular = require('angular');
 const demoApp = angular.module('demoApp');
 
-demoApp.controller('GameController', ['$log', GameController]);
+demoApp.controller('GameController', ['$log', '$http', GameController]);
 
-function GameController($log){
+function GameController($log, $http){
 
   this.player = {};
   this.classes = ['Knight', 'Hacker', 'Pirate', 'Intern'];
@@ -86,5 +86,28 @@ function GameController($log){
 
   this.logHistory = function(info){
     this.history.push({id: this.history.length, text: `${this.player.name} the ${this.player.classes}, ${info}`});
+  };
+
+  this.lists = [];
+
+  let baseUrl = `${__API_URL__}/api/list`;
+  let config = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  };
+
+  this.createList = function(list){
+    $log.debug('listCtrl.createList');
+    $http.post(baseUrl , list, config)
+      .then( res => {
+        $log.log('success!', res.data);
+        this.lists.push(res.data);
+      })
+      .catch( err => {
+        $log.error('error!', err);
+        alert('Ya dun goofed');
+      });
   };
 }
