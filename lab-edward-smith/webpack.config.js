@@ -45,7 +45,7 @@ module.exports = exports = {
         loader: 'file?name=image/[hash]-[name].ext'
       },
       {
-        test: /\.(woff|svg|eot|tff).*/,
+        test: /\.(woff|svg|eot|ttf).*/,
         loader: 'url?limit=10000&name=font/[name].[ext]',
       },
     ],

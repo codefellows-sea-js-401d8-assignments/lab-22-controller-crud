@@ -16,7 +16,7 @@
       </form>
 
       <section>
-        <div ng-repeat="list in listCtrl.lists">{{list.name}} <button type="button" ng-click="listCtrl.deleteListItem(list._id)"></button></div>
+        <div ng-repeat="list in listCtrl.lists"> <i class="fa fa-sticky-note">{{list.name}} <button type="button" ng-click="listCtrl.deleteListItem(list._id)"></button></i></div>
       </section>
     </main>
   </body>
