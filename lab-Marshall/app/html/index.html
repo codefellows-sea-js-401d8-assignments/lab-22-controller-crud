@@ -14,12 +14,12 @@
     <main ng-controller="GameController as gameCtrl">
 
         <h2 ng-hide="gameCtrl.playerIsDone">Select your player character!</h2>
-        <form novalidate ng-submit="gameCtrl.playerSignUp(createPlayerForm.player)" ng-hide="gameCtrl.playerIsDone" name="createPlayerForm">
+        <form novalidate class="form-inlines" ng-submit="gameCtrl.playerSignUp(createPlayerForm.player)" ng-hide="gameCtrl.playerIsDone" name="createPlayerForm">
           <label for="name">Name:</label>
-          <input type="text" name="name" ng-model="createPlayerForm.player.name">
+          <input type="text"class="form-control"  name="name" ng-model="createPlayerForm.player.name">
 
           <label for="email">Email:</label>
-          <input type="text" name="email" ng-model="createPlayerForm.player.email">
+          <input type="text" class="form-control" name="email" ng-model="createPlayerForm.player.email">
 
           <label for="classes">Class:</label>
           <select name="classes" ng-model="createPlayerForm.player.classes" ng-init="createPlayerForm.player.classes='Intern'">
@@ -28,13 +28,13 @@
             </option>
           </select>
 
-          <button type="submit"> Sign Up </button>
+          <button type="submit" class="btn btn-default"> Sign Up </button>
         </form>
 
         <h2 ng-hide="gameCtrl.monsterIsDone">Select your monster!</h2>
-        <form novalidate ng-submit="gameCtrl.monsterSignUp(createMonsterForm.monster)" ng-hide="gameCtrl.monsterIsDone" name="createMonsterForm">
+        <form novalidate class="form-inlines" ng-submit="gameCtrl.monsterSignUp(createMonsterForm.monster)" ng-hide="gameCtrl.monsterIsDone" name="createMonsterForm">
           <label for="name">Name:</label>
-          <input type="text" name="name" ng-model="createMonsterForm.monster.name">
+          <input type="text" class="form-control" name="name" ng-model="createMonsterForm.monster.name">
 
           <label for="species">Species:</label>
           <select name="species" ng-model="createMonsterForm.monster.species" ng-init="createMonsterForm.monster.species='Several Chickens'">
@@ -43,7 +43,7 @@
             </option>
           </select>
 
-          <button type="submit"> Submit Monster </button>
+          <button type="submit"class="btn btn-default"> Submit Monster </button>
         </form>
 
         <h2 ng-show="gameCtrl.monsterIsDone"> You have finished your selections! </h2>
