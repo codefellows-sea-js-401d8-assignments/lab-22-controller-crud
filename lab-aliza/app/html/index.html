@@ -16,7 +16,7 @@
       <button type="submit" class="btn btn-default"> + </button>
       </form>
       <ul>
-        <li ng-repeat="item in listCtrl.lists">{{item.name}}</li>
+        <li ng-repeat="item in listCtrl.lists">{{item.name}} <button type="submit" class="btn btn-default" ng-click="listCtrl.destroyList(item._id)"> - </button></li>
       </ul>
     </main>
   </body>

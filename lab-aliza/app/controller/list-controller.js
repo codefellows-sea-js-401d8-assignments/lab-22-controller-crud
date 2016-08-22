@@ -19,9 +19,24 @@ function ListController($log, $http){
     $log.debug('listCtrl.createList');
     $http.post(baseUrl, list, config)
       .then(res => {
-        console.log('Success!', res.data);
+        $log('Success!', res.data);
         this.lists.push(res.data);
-        console.log('this.lists', this.lists);
+        $log('this.lists', this.lists);
+      })
+      .catch(err => {
+        $log.log('Error: ', err);
+      });
+  };
+
+  this.destroyList = function(id){
+    $http.delete(baseUrl + '/' + id, config)
+      .then(res => {
+        let index = this.lists.findIndex((item)=>{
+          return item._id === id;
+        });
+        this.lists.splice(index, 1);
+        $log('Success!', res.data);
+        $log('this.lists', this.lists);
       })
       .catch(err => {
         $log.log('Error: ', err);
