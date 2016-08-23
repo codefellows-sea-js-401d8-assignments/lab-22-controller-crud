@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="noteApp">
+  <head>
+    <title>simple note app</title>
+    <link rel="stylesheet" href="bundle.css">
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <main ng-controller="ListController as listCtrl">
+
+      <label class="form-label" for="create-list-form">Create A List</label>
+      <form name="create-list-form" class="form-inline" novalidate ng-submit="listCtrl.createList(listCtrl.list)">
+
+        <div class="form-group">
+          <label for="list-name">List Name: </label>
+          <input name="list-name" class="form-control" ng-model="listCtrl.list.name"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">+</button>
+
+      </form>
+
+
+      <label class="form-label" for="fetch-list-form">Fetch A List/Lists</label>
+      <form name="fetch-list-form" class="form-inline" novalidate ng-submit="listCtrl.fetchList(listCtrl.fetchListId)">
+
+        <div class="form-group">
+          <label for="list-id">List ID: </label>
+          <input name="list-id" class="form-control" ng-model="listCtrl.fetchListId"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">?</button>
+
+      </form>
+
+      <label for="fetchedLists">Fetched Lists</label>
+      <ul name="fetchedLists" class="list-group">
+        <li class="list-group-item" ng-repeat="item in listCtrl.lists" value="{{ item.name }}">
+          {{ item.name }}
+        </li>
+      </ul>
+
+
+      <label class="form-label" for="update-list-form">Update A List</label>
+      <form name="update-list-form" class="form-inline" novalidate ng-submit="listCtrl.updateList(listCtrl.updateListId, listCtrl.updateListInfo)">
+
+        <div class="form-group">
+          <label for="list-id">List ID: </label>
+          <input name="list-id" class="form-control" ng-model="listCtrl.updateListId"/>
+          <label for="list-name">List Name: </label>
+          <input name="list-name" class="form-control" ng-model="listCtrl.updateListInfo.name"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">+=</button>
+
+      </form>
+
+
+      <label class="form-label" for="delete-list-form">Delete A List</label>
+      <form name="delete-list-form" class="form-inline" novalidate ng-submit="listCtrl.deleteList(listCtrl.deleteListId)">
+
+        <div class="form-group">
+          <label for="list-id">List ID: </label>
+          <input name="list-id" class="form-control" ng-model="listCtrl.deleteListId"/>
+        </div>
+
+        <button type="submit" class="btn btn-default">-</button>
+
+      </form>
+
+    </main>
+  </body>
+</html>
