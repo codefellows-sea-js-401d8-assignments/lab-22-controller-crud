@@ -1,5 +1,7 @@
 
 {
+  "plugins": ["jasmine"],
+  "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
   "rules": {
     "no-console": 0,
     "indent": [
@@ -26,6 +28,7 @@
   "env": {
     "es6": true,
     "node": true,
+    "jasmine": true,
     "browser": true
   },
   "globals": {
@@ -43,5 +46,4 @@
     "experimentalObjectRestSpread": true,
     "impliedStrict": true
   },
-  "extends": "eslint:recommended"
 }
