@@ -7,9 +7,17 @@
   </head>
 
   <body>
-    <h1>Alonsey</h1>
-    <h3>Alonsey</h3>
-    <h5>Alonsey</h5>
-    <i class="fa fa-trash-o"></i>
+    <main ng-controller="ListController as listCtrl">
+      <form class="form-inline" novalidate ng-submit="listCtrl.createList(listCtrl.list)">
+
+        <div class="form-group">
+          <label for="name">Name: </label>
+          <input name="name" class="form-control" ng-model="listCtrl.list.name" />
+        </div>
+
+        <button type="button" class="btn btn-default"> +</button>
+
+      </form>
+    </main>
   </body>
 </html>
