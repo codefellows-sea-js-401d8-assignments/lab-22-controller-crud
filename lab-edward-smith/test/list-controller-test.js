@@ -9,37 +9,40 @@ describe('testing list controller', function() {
     });
   });
 
-  beforeEach(() => {
-    this.url = 'http://localhost:3000/api/list/';
-    this.requestData = {name: 'Chops'};
-    this.$httpBackend.expectPOST(this.url, this.requestData)
+  it('should create a list', () => {
+    let url = 'http://localhost:3000/api/list/';
+    let requestData = {name: 'Chops'};
+    this.$httpBackend.expectPOST(url, requestData)
       .respond(200, {
         name: 'Chops',
         _id: '1234',
         __v: 0,
         notes: []
       });
-  })
-
-  it('should create a list', () => {
-      this.listCtrl.createList(this.requestData);
-      this.$httpBackend.flush();
-      expect(this.listCtrl.lists.length).toBe(1)
-  })
+    this.listCtrl.createList(requestData);
+    this.$httpBackend.flush();
+    expect(this.listCtrl.lists.length).toBe(1);
+  });
 
   it('should get the list of notes', () => {
     this.$httpBackend.expectGET(this.url)
-      .respond(200)
-    this.listCtrl.getList();
-    console.log(this.listCtrl.lists)
-  })
+      .respond(200, [{
+        name: 'Chops',
+        id: '1234',
+        __v: 0,
+        notes: []
+      }]);
 
-  // it('should delete an item from the list', () => {
-  //   this.$httpBackend.expectDELETE(this.url)
-  //     .respond(200);
-  //   this.listCtrl.createList(this.requestData);
-  //   this.listCtrl.deleteListItem('1234');
-  //   this.$httpBackend.flush();
-  //   expect(this.listCtrl.lists).toBe(0)
-  // })
-})
+    this.listCtrl.getList();
+    this.$httpBackend.flush();
+    expect(this.listCtrl.lists[0].name).toBe('Chops');
+  });
+
+  it('should delete an item from the list', () => {
+    this.$httpBackend.expectDELETE(this.url)
+      .respond(200, {});
+    this.listCtrl.deleteListItem('1234');
+    this.$httpBackend.flush();
+    expect(this.listCtrl.lists.length).toBe(0);
+  });
+});
