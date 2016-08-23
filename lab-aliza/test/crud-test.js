@@ -37,4 +37,35 @@ describe('testing list-controller', function(){
     this.listCtrl.destroyList('1234');
     this.$httpBackend.flush();
   });
+
+  it('testing getLists', () => {
+    let url = 'http://localhost:3000/api/list';
+    let requestData = {name: 'another name'};
+    let postHeaders = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+    let getHeaders = {
+      'Accept': 'application/json'
+    };
+    this.$httpBackend.expectPOST(url, requestData, postHeaders)
+    .respond(200, {
+      _id: '54321',
+      __v: 0,
+      name: 'another name',
+      notes: []
+    });
+    this.$httpBackend.expectGET(url, getHeaders)
+    .respond(200,[
+      {
+        _id: '54321',
+        __v: 0,
+        name: 'another name',
+        notes: []
+      }
+    ]);
+    this.listCtrl.createList(requestData);
+    this.listCtrl.getLists();
+    this.$httpBackend.flush();
+  });
 });
