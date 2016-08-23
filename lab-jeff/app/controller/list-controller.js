@@ -18,6 +18,12 @@ function ListController($log, $http) {
     },
   };
 
+  lc.deleteLocalList = function(listId){
+    lc.lists = lc.lists.filter((list) => {
+      return list._id !== listId;
+    });
+  };
+
   lc.getAllLists = function() {
     $http.get(baseUrl, config)
       .then((res) => {
@@ -57,10 +63,7 @@ function ListController($log, $http) {
     $http.delete(baseUrl + listId, config)
       .then((res) => {
         $log.log('Success', res.data);
-        lc.lists = lc.lists.filter((list) => {
-          return list._id !== listId;
-        });
-        console.log(lc.lists);
+        lc.deleteLocalList(listId);
       })
       .catch((err) => {
         return err;
