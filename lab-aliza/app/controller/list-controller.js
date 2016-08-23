@@ -43,4 +43,16 @@ function ListController($log, $http){
       });
   };
 
+  this.getLists = function() {
+    $http.get(baseUrl, config)
+      .then((res) => {
+        $log.log('Success!', res.data);
+        res.data.forEach((list) => {
+          this.lists.push(list);
+        });
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
 }
