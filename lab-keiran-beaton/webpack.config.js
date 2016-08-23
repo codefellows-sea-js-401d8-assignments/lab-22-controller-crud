@@ -6,7 +6,9 @@ const autoprefixer = require('autoprefixer');
 
 const API_URL = JSON.stringify(process.env.APP_URL || 'http://localhost:3000');
 
-let plugins = [new ExtractText('bundles.css'), new webpack.DefinePlugin({__API_URL__: API_URL})];
+let plugins = [
+  new ExtractText('bundle.css'),
+  new webpack.DefinePlugin({__API_URL__: API_URL})];
 
 module.exports = {
   entry: `${__dirname}/app/entry.js`,
@@ -15,17 +17,17 @@ module.exports = {
     path: 'build',
     filename: 'bundle.js'
   },
+  sassLoader: {
+    includePaths: [`${__dirname}/app/scss/lib`],
+  },
   postcss: function(){
     return [autoprefixer];
-  },
-  sassLoader: {
-    includePaths: [`${__dirname}/app/scss/lib`]
   },
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractText.extract('style', 'css!postcss!sass!')
+        loader: ExtractText.extract('style', 'css!postcss!sass!'),
       },
       {
         test: /\.js$/,
