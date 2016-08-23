@@ -1,7 +1,7 @@
 'use strict';
 
 const angular = require('angular');
-const lab22 = angular.module.('lab22');
+const lab22 = angular.module('lab22');
 
 lab22.controller('ListController', ['$log', '$http', ListController]);
 
@@ -11,6 +11,7 @@ function ListController($log, $http){
   let config = {
     headers: {
       'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
   };
 
@@ -19,11 +20,11 @@ function ListController($log, $http){
     $http.post(baseUrl, list, config)
       .then( (res)=>{
         $log.log('success!', res.data);
-        this.lists.push({id: this.lists.length, title: this.lists.title, body: this.lists.body});
+        this.lists.push({id: this.lists.length, title: res.data.title, body: res.data.body});
       })
       .catch((err)=>{
         $log.error('error!', err);
         alert('EHHHHHHHHHHH');
       });
-  }
+  };
 }
