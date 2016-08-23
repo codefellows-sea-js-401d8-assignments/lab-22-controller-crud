@@ -8,16 +8,23 @@ html, body {
 }
 
 body {
-  background-color: $app-light;
+  margin-left: 20px;
+  background-color: $app-accent;
+  color: $app-dark;
   h1 {
-    margin: 20px;
+    padding-top: 20px;
   }
   form {
     width: 50%;
     padding: 10px;
   }
   ul {
+    border: 3px solid $app-dark;
+    border-radius: 15px;
+    background-color: $app-light;
     list-style-type: none;
+    width: 50%;
+    padding: 10px;
     li {
       padding: 5px;
       button {

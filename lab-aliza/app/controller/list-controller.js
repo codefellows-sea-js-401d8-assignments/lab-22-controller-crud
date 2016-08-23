@@ -52,7 +52,7 @@ function ListController($log, $http){
         });
       })
       .catch((err) => {
-        return err;
+        $log.log('Error: ', err);
       });
   };
 }
