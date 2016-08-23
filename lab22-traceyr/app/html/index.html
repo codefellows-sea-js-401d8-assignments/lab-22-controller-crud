@@ -8,16 +8,29 @@
 
   <body>
     <main ng-controller="ListController as listCtrl">
-      <form class="form-inline" novalidate ng-submit="listCtrl.createList(listCtrl.list)">
+      <form class="form-block novalidate ng-submit="listCtrl.createList(listCtrl.list)">
 
         <div class="form-group">
-          <label for="name">Name: </label>
-          <input name="name" class="form-control" ng-model="listCtrl.list.name" />
+          <label for="blogName">Title: </label>
+          <input name="blogName" type="text" class="form-control" ng-model="listCtrl.list.title" />
+          <label for="body">Body:</label>
+          <input name="body" class="form-control" ng-model=listCtrl.list.body />
         </div>
 
         <button type="button" class="btn btn-default"> +</button>
 
       </form>
+
+      <ul>
+        <li ng-repeat="post in listCtrl.lists track by item.id">
+          {{item.title}}
+          <ul>
+            <li>
+              {{item.body}}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </main>
   </body>
 </html>

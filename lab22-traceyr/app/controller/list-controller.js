@@ -19,7 +19,7 @@ function ListController($log, $http){
     $http.post(baseUrl, list, config)
       .then( (res)=>{
         $log.log('success!', res.data);
-        this.lists.push(res.data);
+        this.lists.push({id: this.lists.length, title: this.lists.title, body: this.lists.body});
       })
       .catch((err)=>{
         $log.error('error!', err);
