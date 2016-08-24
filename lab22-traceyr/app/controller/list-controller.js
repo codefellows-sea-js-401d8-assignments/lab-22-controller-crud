@@ -17,14 +17,14 @@ function ListController($log, $http){
 
   this.createList = function(list){
     $log.debug('listCtrl.createList');
-    $http.post(baseUrl, list, config)
-      .then( (res)=>{
+    $http.post(baseUrl, list, [config])
+      .then((res)=>{
         $log.log('success!', res.data);
-        this.lists.push({id: this.lists.length, title: res.data.title, body: res.data.body});
+        this.lists.push(res.data);
       })
       .catch((err)=>{
         $log.error('error!', err);
-        alert('EHHHHHHHHHHH');
+        alert('fuck');
       });
   };
 }

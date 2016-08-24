@@ -5,3 +5,5 @@ require('./scss/base.scss');
 
 const angular = require('angular');
 angular.module('lab22', []);
+
+require('./controller/list-controller');
