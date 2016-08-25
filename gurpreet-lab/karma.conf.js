@@ -1,13 +1,13 @@
 // Karma configuration
 // Generated on Mon Aug 22 2016 20:29:16 GMT-0700 (PDT)
-
+const webpackConfig = require('./webpack.config.js');
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
+    webpack: webpackConfig,
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
@@ -29,6 +29,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'app/entry.js' : ['webpack'],
+      'test/*-test.js': ['babel']
     },
 
 

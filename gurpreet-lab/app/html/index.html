@@ -14,8 +14,11 @@
       <input name="name" class="form-control" ng-model="listCtrl.list.name">
     </div>
 
-    <button type="submit" class="btn btn-default"> + </button>
-  </form>
-</main>
-</body>
+    <button type="submit" class="btn btn-default"><i class="fa fa-pencil fa-fw"></i>Create</a></button>
+      </form>
+       <ul ng-init="listCtrl.getLists()">
+        <li ng-repeat="item in listCtrl.lists"><button type="submit" class="btn btn-danger btn-default" ng-click="listCtrl.destroyList(item._id)"><i class="fa fa-trash-o fa-lg"></i>Delete</a></button>{{item.name}}</li>
+      </ul>
+    </main>
+  </body>
 </html>
