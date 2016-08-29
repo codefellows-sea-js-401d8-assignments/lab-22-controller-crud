@@ -7,6 +7,7 @@ listApp.controller('ListController', ['$log', '$http', ListController]);
 
 function ListController($log, $http){
   this.lists = [];
+  this.showAll = false;
   let baseUrl = `${__API_URL__}/api/list`;
   let config = {
     headers: {
@@ -29,6 +30,7 @@ function ListController($log, $http){
   };
 
   this.destroyList = function(id){
+    $log.debug('listCtrl.deleteList');
     $http.delete(baseUrl + '/' + id, config)
       .then(res => {
         let index = this.lists.findIndex((item)=>{
@@ -44,6 +46,7 @@ function ListController($log, $http){
   };
 
   this.getLists = function() {
+    $log.debug('listCtrl.getAllList');
     $http.get(baseUrl, config)
       .then((res) => {
         $log.log('Success!', res.data);
