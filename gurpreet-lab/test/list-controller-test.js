@@ -25,6 +25,7 @@ describe('testing list-controller', function(){
     });
     this.listCtrl.createList(requestData);
     this.$httpBackend.flush();
+    expect(this.listCtrl.list.length).toBe(1);
   });
 
   it('testing destroyList', () => {
@@ -36,6 +37,7 @@ describe('testing list-controller', function(){
     .respond(200, {});
     this.listCtrl.destroyList('1234');
     this.$httpBackend.flush();
+    expect(this.listCtrl.list.length).toBe('0');
   });
 
   it('testing getLists', () => {
@@ -67,5 +69,6 @@ describe('testing list-controller', function(){
     this.listCtrl.createList(requestData);
     this.listCtrl.getLists();
     this.$httpBackend.flush();
+    expect(this.listCtrl.list[0].name).toBe('another name');
   });
 });
