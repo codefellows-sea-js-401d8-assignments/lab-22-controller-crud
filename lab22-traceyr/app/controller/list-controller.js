@@ -42,4 +42,19 @@ function ListController($log, $http){
         $log.log('Error: ', err);
       });
   };
+
+  this.deleteList = function(id){
+    $http.delete(baseUrl + '/' + id, config)
+      .then((res)=>{
+        let index = this.lists.findIndex((item)=>{
+          return item._id === id;
+        });
+        this.lists.splice(index, 1);
+        $log.log('Success!', res.data);
+      })
+      .catch((err)=>{
+        alert('FUCK THIS ISNT WORKING EITHER');
+        $log.log('Error', err);
+      });
+  };
 }

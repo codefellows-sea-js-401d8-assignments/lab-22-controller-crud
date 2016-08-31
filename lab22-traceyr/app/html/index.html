@@ -22,7 +22,7 @@
       </form>
 
       <ul ng-init="listCtrl.getLists()">
-        <li ng-repeat="item in listCtrl.lists">
+        <li ng-repeat="item in listCtrl.lists"><button type="submit" ng-click="listCtrl.deleteList(item._id)">Remove</button>
           {{item.name}}
         </li>
       </ul>
